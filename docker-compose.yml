@@ -1,0 +1,10 @@
+version: '3.3'
+
+services:
+  cpp:
+    build: .
+    image: debian_cpp:1.0
+    container_name: debian_cpp
+    volumes:
+      - .:/cpp
+    tty: true
