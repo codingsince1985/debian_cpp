@@ -1,9 +1,9 @@
-version: '3.7'
+version: '3.8'
 
 services:
   cpp:
     build: .
-    image: debian_cpp:3.0
+    image: debian_cpp:4.0
     container_name: debian_cpp
     volumes:
       - .:/cpp
