@@ -1,15 +1,13 @@
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
-ARG python=python3.9
+RUN apt update
 
-RUN apt-get update && apt-get install -y build-essential vim curl git zsh $python && rm -rf /var/lib/apt/lists/*
-
+RUN apt install -y curl git zsh
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"; exit 0
-
-ADD .vimrc /root/
-
-RUN ln -s /usr/bin/$python /usr/bin/python
-
 RUN sed -i 's/"robbyrussell"/"af-magic"/g' /root/.zshrc
+
+RUN apt install -y build-essential vim
+
+RUN apt install -y python-is-python3 python3-pip
 
 WORKDIR /cpp
